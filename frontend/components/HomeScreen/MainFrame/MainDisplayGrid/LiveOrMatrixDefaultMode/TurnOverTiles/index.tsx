@@ -197,9 +197,8 @@ orTileGrid: {
   paddingHorizontal: 5, // grid padding
 },
 tile: {
-  width: "21%", // roughly 4 per row with spacing
-  // height:"15%",
-  aspectRatio: 1.12, // keeps the height proportional
+  width: "21%",
+  aspectRatio: 0.9, // keeps the height proportional
   backgroundColor: "#333",
   borderRadius: 6,
   margin: "2%", // equal spacing all sides
@@ -213,14 +212,15 @@ tileHeader: {
   alignItems: "center",
 },
 tileTextMiddle: {
-  fontSize: 22,
+  fontSize: 30,
   color: "rgba(255,255,255,0.75)",
   textAlign: "center",
   flex: 1,
-  textAlignVertical: "center",
+  marginTop:9,
+  textAlignVertical: "top",
 },
 tileTextMiddleRed: {
-  fontSize: 22,
+  fontSize: 26,
   color: "#AB2D2D",
   textAlign: "center",
   flex: 1,

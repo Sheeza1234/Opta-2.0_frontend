@@ -1,51 +1,249 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import FloorMap from "./FloormapMid/index";
-import { TurnoverTile, TurnoverTile1, TurnoverTile2, TurnoverTile3, TurnoverTile4, TurnoverTile5, TurnoverTile6, TurnoverTile7, TurnoverTile8 } from "./TurnOverTiles";
-type TileData = Record<string, string[]>;
-type LiveORMatrixDefaultModeProps = {
-  selectedTileId: string | null;
-  setSelectedTileId: (staff: string | null) => void;
-   onRoomSelect?: (tileId: string, staffId?: string) => void;
-};
+import Calender from "@/assets/calender.svg";
+import Surgery from "@/assets/surgery.svg";
+import TurnOverProgress from '@/assets/turnover-in-progress.svg';
+import TurnOverRed from '@/assets/Turnover.svg';
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as React from "react";
+import { StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
-const LiveORMatrixDefaultMode:React.FC<LiveORMatrixDefaultModeProps> = ({selectedTileId, setSelectedTileId,onRoomSelect}) => {
+interface TurnoverTileProps {
+  onPress?: () => void;
+}
 
-  const handleClick = (tileId: string) => {
-    setSelectedTileId(tileId);
-    onRoomSelect?.(tileId);
-  };
-
+export const TurnoverTile: React.FC<TurnoverTileProps> = ({ onPress }) => {
   return (
-    <SafeAreaView style={styles.liveOrMatrixDefaultMode} edges={["left", "right"]}>
-      {selectedTileId ? (
-        <FloorMap selectedTileId={selectedTileId} onBack={() => setSelectedTileId(null)} onRoomSelect={onRoomSelect}/>
-      ) : (
-        <View style={styles.view}>
-          <Text style={styles.liveOrMatrix}>Live OR Matrix</Text>
-          <View style={styles.orTileGrid}>
-            <TurnoverTile onPress={() => handleClick("1")} />
-            <TurnoverTile1 onPress={() => handleClick("2")} />
-            <TurnoverTile2 onPress={() => handleClick("3/4")} />
-            <TurnoverTile3 onPress={() => handleClick("5")} />
-            <TurnoverTile4 onPress={() => handleClick("6")} />
-            <TurnoverTile5 onPress={() => handleClick("7")} />
-            <TurnoverTile6 onPress={() => handleClick("8")} />
-            <TurnoverTile7 onPress={() => handleClick("T1")} />
-            <TurnoverTile8 onPress={() => handleClick("T2")} />
-          </View>
-        </View>
-      )}
-    </SafeAreaView>
+    <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+        <TurnOverProgress />
+      </View>
+
+      <Text style={styles.tileTextMiddle}>00:00</Text>
+    </TouchableOpacity>
+  );
+};
+export const TurnoverTile4: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      	        <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+		<TurnOverProgress/>
+
+      </View>
+      <Text style={styles.tileTextMiddle}>00:00</Text>
+       <View style={styles.bottomIcons}>
+        <MaterialCommunityIcons name="hospital-building" size={16} color="#6BFF9B" />
+        <MaterialCommunityIcons
+          name="account-group"
+          size={16}
+          color="#6BFF9B"
+        />
+        <MaterialCommunityIcons name="bed" size={16} color="#6BFF9B" />
+                <MaterialCommunityIcons name="checkbox-outline" size={16} color="#6BFF9B" />
+       
+      </View>
+
+    </TouchableOpacity>
   );
 };
 
-const styles = StyleSheet.create({
-  liveOrMatrixDefaultMode: { backgroundColor: "#1a1a1a", flex: 1, paddingTop: 12, paddingBottom: 12 },
-  orTileGrid: { flexDirection: "row", flexWrap: "wrap", marginTop: 20, paddingHorizontal: 5 },
-  liveOrMatrix: { marginTop: 5, marginBottom: 5, fontSize: 14, fontWeight: "500", fontFamily: "Inter-Medium", color: "#6BFF9BBF", textAlign: "center" },
-  view: { borderRadius: 20, overflow: "hidden", width: "100%", backgroundColor: "#1a1a1a", flex: 1, alignItems: "center" }
-});
 
-export default LiveORMatrixDefaultMode;
+export const TurnoverTile1: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      	        <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+		<TurnOverProgress/>
+
+      </View>
+      <Text style={styles.tileTextMiddle}>00:00</Text>
+       <View style={styles.bottomIcons}>
+        <MaterialCommunityIcons name="hospital-building" size={16} color="#6BFF9B" />
+        
+      </View>
+
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile2: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      	        <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+		<TurnOverProgress/>
+
+      </View>
+      <Text style={styles.tileTextMiddle}>00:00</Text>
+       <View style={styles.bottomIcons}>
+        <MaterialCommunityIcons name="hospital-building" size={16} color="#6BFF9B" />
+        <MaterialCommunityIcons
+          name="account-group"
+          size={16}
+          color="#6BFF9B"
+        />
+
+      </View>
+
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile3: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      	        <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+		<TurnOverProgress/>
+
+      </View>
+      <Text style={styles.tileTextMiddle}>00:00</Text>
+       <View style={styles.bottomIcons}>
+        <MaterialCommunityIcons name="hospital-building" size={16} color="#6BFF9B" />
+        <MaterialCommunityIcons
+          name="account-group"
+          size={16}
+          color="#6BFF9B"
+        />
+        <MaterialCommunityIcons name="bed" size={16} color="#6BFF9B" />
+      </View>
+
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile5: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+        <MaterialCommunityIcons name="alert" size={20} color="yellow" />
+      </View>
+
+      <View style={styles.middleContainer}>
+        <Surgery width={40} height={40} />
+      </View>
+
+      <Text style={styles.delaytext}>00 Min Delay</Text>
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile6: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+      </View>
+
+      <View style={styles.middleContainer}>
+        <Surgery width={40} height={40} />
+      </View>
+
+     
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile7: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+     <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      	        <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+		<TurnOverRed/>
+
+      </View>
+      <Text style={styles.tileTextMiddleRed}>00:00</Text>
+       <Text style={styles.delaytext}>00 Min Delay</Text>
+
+    </TouchableOpacity>
+  );
+};
+
+export const TurnoverTile8: React.FC<TurnoverTileProps> = ({ onPress }) => {
+  return (
+   <TouchableOpacity style={styles.tile} onPress={onPress} activeOpacity={0.7}>
+      <View style={styles.tileHeader}>
+        <Text style={styles.tileTextTop}>01</Text>
+      </View>
+
+      <View style={styles.middleContainer}>
+        <Calender width={40} height={40}  style={{marginBottom:4}}/>
+      </View>
+
+      <Text style={styles.delaytext}>Block Time</Text>
+      <Text style={styles.delaytext}>Surgeon Name</Text>
+
+     
+    </TouchableOpacity>
+  );
+};
+
+const styles=StyleSheet.create({
+     bottomIcons: {
+    flexDirection: "row",
+    // justifyContent: "space-around",
+    gap:6,
+    left:3,
+    width: "80%",
+    justifyContent:'center',
+    
+  },
+orTileGrid: {
+  flexDirection: "row",
+  flexWrap: "wrap",
+  marginTop:20,
+  // justifyContent: "flex-start",
+  paddingHorizontal: 5, // grid padding
+},
+tile: {
+  width: "21%",
+  aspectRatio: 0.9, // keeps the height proportional
+  backgroundColor: "#333",
+  borderRadius: 6,
+  margin: "2%", // equal spacing all sides
+  padding: 8,
+  justifyContent: "space-between",
+},
+
+tileHeader: {
+  flexDirection: "row",
+  justifyContent: "space-between",
+  alignItems: "center",
+},
+tileTextMiddle: {
+  fontSize: 30,
+  color: "rgba(255,255,255,0.75)",
+  textAlign: "center",
+  flex: 1,
+  marginTop:9,
+  textAlignVertical: "top",
+},
+tileTextMiddleRed: {
+  fontSize: 26,
+  color: "#AB2D2D",
+  textAlign: "center",
+  flex: 1,
+  textAlignVertical: "center",
+},
+middleContainer: {
+  flex: 1, // takes up the available space between header and footer
+  justifyContent: "center", // center vertically
+  alignItems: "center", // center horizontally
+},
+
+delaytext: {
+  textAlign: "center",
+  color: "#FFFFFFBF",
+  fontSize:11,
+  fontWeight:'500',
+  marginTop: 2,
+  
+},
+
+
+  tileTextTop: {
+    fontSize: 14,
+    color: "#fff",
+  },
+})
